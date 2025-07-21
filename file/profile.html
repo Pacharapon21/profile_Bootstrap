@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แนะนำตัว</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .intro-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #f1c40f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            .intro-card {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 24px;
+            }
+            
+            .profile-img {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-card">
+        <div class="profile-img">
+            <!-- เปลี่ยนเป็นรูปจริง -->
+            <img src="https://scontent.fnak4-2.fna.fbcdn.net/v/t39.30808-1/428614200_1093180445284970_476619500704015776_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=100&ccb=1-7&_nc_sid=e99d92&_nc_ohc=sDm-zu7p19wQ7kNvwHLQaWf&_nc_oc=AdkybgiUbabFxqefM_w8JHekBfWnxAgOBTakD2soV_a8B6OMa8vtFqlyNNtfZaHriwG8JQv9LlUEQX8vx8FcUUnG&_nc_zt=24&_nc_ht=scontent.fnak4-2.fna&_nc_gid=-wMpOdxjgAnMW30B4YHZRA&oh=00_AfSwckQGGcIynfsojYex5CwAopdXTd83R-bcKWyjwbn8GQ&oe=6883AAE0" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+           
+        </div>
+        
+        <h1 class="name">สวัสดีครับ!</h1>
+        <p class="title">นักพัฒนาเว็บไซต์</p>
+        
+        <p class="description">
+            ผมเป็นคนที่หลงใหลในการสร้างสรรค์เว็บไซต์และแอปพลิเคชัน 
+            ชอบเรียนรู้เทคโนโลยีใหม่ๆ และแก้ไขปัญหาต่างๆ ด้วยการเขียนโค้ด
+        </p>
+        
+        <div class="skills">
+            <span class="skill-tag">HTML & CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+        </div>
+        
+        <button class="back-btn" onclick="goBack()">
+            ← กลับหน้าแรก
+        </button>
+    </div>
+
+    <script>
+        function goBack() {
+            // ลองกลับไปหน้าก่อนหน้าก่อน
+            if (document.referrer) {
+                window.history.back();
+            } else {
+                // ถ้าไม่มีหน้าก่อนหน้า ให้ไปหน้าแรก
+                window.location.href = 'index.html';
+            }
+        }
+
+        // เอฟเฟกต์เคลื่อนไหวเมื่อโหลดหน้า
+        window.addEventListener('load', function() {
+            document.querySelector('.intro-card').style.opacity = '0';
+            document.querySelector('.intro-card').style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                document.querySelector('.intro-card').style.transition = 'all 0.8s ease';
+                document.querySelector('.intro-card').style.opacity = '1';
+                document.querySelector('.intro-card').style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
