@@ -1,9 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "mypange.html", "use": "@vercel/static" }
+    { "src": "/file/index.html", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/mypange.html" }
+    { "src": "/(.*)", "dest": "/file/index.html" }
   ]
 }
