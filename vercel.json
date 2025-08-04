@@ -6,6 +6,5 @@
     { "src": "/profile", "dest": "/file/profile.html" },
     { "src": "/home", "dest": "/file/home.html" },
     { "src": "/contact", "dest": "/file/contact.html" }
-    { "src": "/for", "dest": "/file/for.html" }
   ]
 }
