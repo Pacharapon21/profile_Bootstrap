@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สูตรคูณ - ค้นหาและเรียนรู้</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .controls {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #feca57, #ff9ff3);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .range-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .range-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .range-group label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .range-input {
+            width: 80px;
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .search-result {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .search-result.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-result h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .result-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .result-item:hover {
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .multiplication-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .table-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .table-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .table-content {
+            display: grid;
+            gap: 8px;
+        }
+
+        .table-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .table-row:hover {
+            background: #e9ecef;
+        }
+
+        .equation {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .result {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .search-container {
+                flex-direction: column;
+            }
+            
+            .search-input {
+                min-width: 100%;
+            }
+            
+            .range-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .multiplication-table {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔢 สูตรคูณ</h1>
+            <p>เรียนรู้และค้นหาสูตรคูณได้อย่างง่ายดาย</p>
+        </div>
+
+        <div class="controls">
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="ค้นหาสูตรคูณ เช่น 5x3, แม่ 7, หรือ ผลลัพธ์ 24">
+                <button class="btn btn-primary" onclick="searchMultiplication()">🔍 ค้นหา</button>
+                <button class="btn btn-secondary" onclick="clearSearch()">🗑️ ล้าง</button>
+            </div>
+
+            <div class="range-controls">
+                <div class="range-group">
+                    <label>แม่:</label>
+                    <input type="number" class="range-input" id="startTable" value="1" min="1" max="20">
+                    <span>ถึง</span>
+                    <input type="number" class="range-input" id="endTable" value="12" min="1" max="20">
+                </div>
+                <div class="range-group">
+                    <label>คูณ:</label>
+                    <input type="number" class="range-input" id="startMultiplier" value="1" min="1" max="20">
+                    <span>ถึง</span>
+                    <input type="number" class="range-input" id="endMultiplier" value="12" min="1" max="20">
+                </div>
+                <button class="btn btn-primary" onclick="generateTables()">📊 สร้างตาราง</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="search-result" id="searchResult">
+                <h3>ผลการค้นหา:</h3>
+                <div class="result-grid" id="searchResultGrid"></div>
+            </div>
+
+            <div class="multiplication-table" id="multiplicationTable"></div>
+        </div>
+    </div>
+
+    <script>
+        // โหลดตารางเริ่มต้น
+        document.addEventListener('DOMContentLoaded', function() {
+            generateTables();
+            
+            // เพิ่ม event listener สำหรับ Enter key
+            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchMultiplication();
+                }
+            });
+        });
+
+        function generateTables() {
+            const startTable = parseInt(document.getElementById('startTable').value);
+            const endTable = parseInt(document.getElementById('endTable').value);
+            const startMultiplier = parseInt(document.getElementById('startMultiplier').value);
+            const endMultiplier = parseInt(document.getElementById('endMultiplier').value);
+            
+            const container = document.getElementById('multiplicationTable');
+            container.innerHTML = '';
+
+            for (let table = startTable; table <= endTable; table++) {
+                const tableCard = document.createElement('div');
+                tableCard.className = 'table-card';
+                
+                const header = document.createElement('div');
+                header.className = 'table-header';
+                header.textContent = `แม่ ${table}`;
+                
+                const content = document.createElement('div');
+                content.className = 'table-content';
+                
+                for (let multiplier = startMultiplier; multiplier <= endMultiplier; multiplier++) {
+                    const row = document.createElement('div');
+                    row.className = 'table-row';
+                    
+                    const equation = document.createElement('span');
+                    equation.className = 'equation';
+                    equation.textContent = `${table} × ${multiplier}`;
+                    
+                    const result = document.createElement('span');
+                    result.className = 'result';
+                    result.textContent = table * multiplier;
+                    
+                    row.appendChild(equation);
+                    row.appendChild(result);
+                    content.appendChild(row);
+                }
+                
+                tableCard.appendChild(header);
+                tableCard.appendChild(content);
+                container.appendChild(tableCard);
+            }
+        }
+
+        function searchMultiplication() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (!searchTerm) {
+                alert('กรุณาใส่คำค้นหา');
+                return;
+            }
+
+            const searchResult = document.getElementById('searchResult');
+            const searchResultGrid = document.getElementById('searchResultGrid');
+            searchResultGrid.innerHTML = '';
+
+            let results = [];
+
+            // ค้นหาแบบต่างๆ
+            if (searchTerm.includes('แม่')) {
+                // ค้นหาแม่สูตร เช่น "แม่ 7"
+                const tableMatch = searchTerm.match(/แม่\s*(\d+)/);
+                if (tableMatch) {
+                    const table = parseInt(tableMatch[1]);
+                    for (let i = 1; i <= 12; i++) {
+                        results.push({
+                            equation: `${table} × ${i}`,
+                            result: table * i
+                        });
+                    }
+                }
+            } else if (searchTerm.includes('x') || searchTerm.includes('×') || searchTerm.includes('*')) {
+                // ค้นหาสมการ เช่น "5x3" หรือ "5*3"
+                const equationMatch = searchTerm.match(/(\d+)[x×*](\d+)/);
+                if (equationMatch) {
+                    const num1 = parseInt(equationMatch[1]);
+                    const num2 = parseInt(equationMatch[2]);
+                    results.push({
+                        equation: `${num1} × ${num2}`,
+                        result: num1 * num2
+                    });
+                }
+            } else if (!isNaN(searchTerm)) {
+                // ค้นหาจากผลลัพธ์
+                const targetResult = parseInt(searchTerm);
+                for (let i = 1; i <= 20; i++) {
+                    for (let j = 1; j <= 20; j++) {
+                        if (i * j === targetResult) {
+                            results.push({
+                                equation: `${i} × ${j}`,
+                                result: targetResult
+                            });
+                        }
+                    }
+                }
+            } else {
+                // ค้นหาทั่วไป
+                const num = parseInt(searchTerm);
+                if (!isNaN(num)) {
+                    for (let i = 1; i <= 12; i++) {
+                        results.push({
+                            equation: `${num} × ${i}`,
+                            result: num * i
+                        });
+                    }
+                }
+            }
+
+            // แสดงผลลัพธ์
+            if (results.length > 0) {
+                results.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+                    resultItem.innerHTML = `<strong>${item.equation}</strong> = <span style="color: #667eea;">${item.result}</span>`;
+                    searchResultGrid.appendChild(resultItem);
+                });
+                searchResult.classList.add('active');
+            } else {
+                searchResultGrid.innerHTML = '<div class="no-results">😔 ไม่พบผลลัพธ์ที่ตรงกับการค้นหา<br>ลองค้นหาด้วย: แม่ 5, 3x4, หรือ ผลลัพธ์ 15</div>';
+                searchResult.classList.add('active');
+            }
+
+            // เลื่อนไปยังผลลัพธ์
+            searchResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchResult').classList.remove('active');
+        }
+
+        // เพิ่มฟังก์ชันสำหรับการเปลี่ยนแปลงค่าแบบ real-time
+        document.getElementById('startTable').addEventListener('input', generateTables);
+        document.getElementById('endTable').addEventListener('input', generateTables);
+        document.getElementById('startMultiplier').addEventListener('input', generateTables);
+        document.getElementById('endMultiplier').addEventListener('input', generateTables);
+    </script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC shop</title>
+</head>
+<body>
+    <div class="kfcshop">
+        <h3>KFC shop</h3>
+    </div>
+    <a href="/templates/about.html">ไปหน้ารายการอาหาร</a>
+    <!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC Shop - ไก่ทอดกรอบอร่อย</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --kfc-red: #e4002b;
+            --kfc-dark-red: #c50025;
+            --kfc-gold: #fdb913;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--kfc-red), var(--kfc-dark-red));
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--kfc-red), var(--kfc-dark-red));
+            color: white;
+            padding: 120px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,0 1000,100 1000,0"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn-kfc {
+            background: var(--kfc-gold);
+            color: var(--kfc-dark-red);
+            border: none;
+            padding: 15px 35px;
+            font-weight: bold;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-kfc:hover {
+            background: #f4a60d;
+            color: var(--kfc-dark-red);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .hero-icon {
+            font-size: 20rem;
+            opacity: 0.2;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .animate-fade-left {
+            animation: fadeInLeft 0.8s ease forwards;
+        }
+        
+        .animate-fade-right {
+            animation: fadeInRight 0.8s ease forwards;
+        }
+        
+        .brand-highlight {
+            color: var(--kfc-gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .floating-chicken {
+            position: absolute;
+            color: rgba(255,255,255,0.1);
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .chicken-1 {
+            top: 10%;
+            left: 80%;
+            font-size: 3rem;
+            animation-delay: 0s;
+        }
+        
+        .chicken-2 {
+            top: 60%;
+            left: 10%;
+            font-size: 2rem;
+            animation-delay: 2s;
+        }
+        
+        .chicken-3 {
+            top: 30%;
+            right: 5%;
+            font-size: 4rem;
+            animation-delay: 4s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 animate-fade-left" href="#">
+                <i class="fas fa-drumstick-bite me-2"></i>KFC Shop
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+        
+                    <li class="nav-item">
+                        <a class="nav-link" href="/file/about.html">เมนูอาหาร</a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/file/contact.html">ติดต่อ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/file/for.html">สูตรคูณ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="floating-elements">
+            <i class="fas fa-drumstick-bite floating-chicken chicken-1"></i>
+            <i class="fas fa-drumstick-bite floating-chicken chicken-2"></i>
+            <i class="fas fa-drumstick-bite floating-chicken chicken-3"></i>
+        </div>
+        
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6 hero-content">
+                    <div class="animate-fade-up" style="animation-delay: 0.2s;">
+                        <h1 class="display-2 fw-bold mb-4">
+                            ไก่ทอด<span class="brand-highlight">กรอบ</span><br>
+                            รสชาติ<span class="brand-highlight">เลิศ</span>
+                        </h1>
+                    </div>
+                    
+                    <div class="animate-fade-up" style="animation-delay: 0.4s;">
+                        <p class="hero-subtitle">
+                            <i class="fas fa-star text-warning me-2"></i>
+                            สูตรเด็ด <strong>11 เครื่องเทศ</strong> ไก่ทอดกรอบนอกนุ่มใน<br>
+                            พร้อมเสิร์ฟความอร่อยถึงมือคุณ
+                        </p>
+                    </div>
+                    
+                    <div class="animate-fade-up" style="animation-delay: 0.6s;">
+                        <div class="d-flex flex-wrap gap-3">
+                            <button class="btn btn-kfc btn-lg">
+                                <i class="fas fa-shopping-cart me-2"></i>สั่งออนไลน์เลย
+                            </button>
+                            <button class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-phone me-2"></i>โทรสั่ง 02-XXX-XXXX
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="animate-fade-up mt-5" style="animation-delay: 0.8s;">
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <div class="p-3">
+                                    <i class="fas fa-clock fs-2 text-warning mb-2 d-block"></i>
+                                    <small>เปิดทุกวัน<br>10:00-22:00</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="p-3">
+                                    <i class="fas fa-truck fs-2 text-warning mb-2 d-block"></i>
+                                    <small>ส่งฟรี<br>เมื่อสั่ง 300฿+</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="p-3">
+                                    <i class="fas fa-heart fs-2 text-warning mb-2 d-block"></i>
+                                    <small>รับประกัน<br>ความอร่อย</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 text-center">
+                    <div class="animate-fade-right" style="animation-delay: 1s;">
+                        <i class="fas fa-drumstick-bite hero-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(196, 0, 37, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = 'linear-gradient(135deg, var(--kfc-red), var(--kfc-dark-red))';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Button click animation
+        document.querySelectorAll('.btn-kfc').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const original = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check me-2"></i>กำลังดำเนินการ...';
+                this.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    this.innerHTML = original;
+                    this.style.background = 'var(--kfc-gold)';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
