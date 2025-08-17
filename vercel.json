@@ -5,7 +5,7 @@
   ],
   "routes": [
     { "src": "/static/(.*)", "dest": "/static/$1" },
-    { "src": "/(.*)", "dest": "/api/index.py" }
+    { "src": "/.*", "dest": "/api/index.py" }
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "profile_django.settings",
