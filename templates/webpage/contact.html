@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ติดต่อเรา - Contact</title>
+    <style>
+        /* ...CSS from contact.html... */
+    </style>
+</head>
+<body>
+    <button class="back-btn" onclick="goBack()">← กลับหน้าแรก</button>
+    <div class="container">
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h2 class="section-title">ติดต่อเรา</h2>
+            <!-- ...contact info content... -->
+        </div>
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2 class="section-title">ส่งข้อความหาเรา</h2>
+            <div class="success-message" id="successMessage">ขอบคุณครับ! ข้อความของคุณได้ถูกส่งแล้ว เราจะติดต่อกลับเร็วๆ นี้</div>
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <!-- ...form fields... -->
+            </form>
+        </div>
+    </div>
+    <script>
+        // ...JS from contact.html...
+    </script>
+</body>
+</html>
