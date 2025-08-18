@@ -1,10 +1,10 @@
 {
   "version": 2,
+  "builds": [
+    { "src": "manage.py", "use": "@vercel/python", "config": { "maxLambdaSize": "50mb" } }
+  ],
   "routes": [
-    { "src": "/", "dest": "/index.html" },
-    { "src": "/about", "dest": "/about.html" },
-    { "src": "/index", "dest": "/index.html" },
-   { "src": "/home", "dest": "/home.html" },
-    { "src": "/contact", "dest": "/contact.html" }
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/(.*)", "dest": "/manage.py" }
   ]
 }
